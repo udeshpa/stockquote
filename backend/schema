@@ -1,0 +1,43 @@
+-- SEQUENCE: public.request_requestid_seq
+
+-- DROP SEQUENCE public.request_requestid_seq;
+
+CREATE SEQUENCE public.request_requestid_seq;
+
+ALTER SEQUENCE public.request_requestid_seq
+    OWNER TO udaydeshpande;
+    
+-- Table: public.request
+
+-- DROP TABLE public.request;
+
+CREATE TABLE public.request
+(
+    requestid bigint NOT NULL DEFAULT nextval('request_requestid_seq'::regclass),
+    fulfilled boolean DEFAULT false
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.request
+    OWNER to udaydeshpande;
+
+-- Table: public.ticker_request
+
+-- DROP TABLE public.ticker_request;
+
+CREATE TABLE public.ticker_request
+(
+    ticker character varying(10)[] COLLATE pg_catalog."default" NOT NULL,
+    requestid integer NOT NULL,
+    userid character varying(20)[] COLLATE pg_catalog."default" NOT NULL
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.ticker_request
+    OWNER to udaydeshpande;

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Stock Tickers File Upload</h2>
+
+<form id="uploadbanner" enctype="multipart/form-data" method="post" action="/uploadtickers">
+   <input name="tickerfile" type="file" />
+   <input type="submit" value="submit" id="submit" />
+</form>
+
+<form id="filterbanner" enctype="multipart/form-data" method="post" action="/filtersort">
+   <input type="text" name="requestid" value="146" />
+   <input type="submit" value="submit" name="submit" />
+   <input type="text" name="pelt" value="15" />
+   <input type="text" name="fpelt" value="15" />
+   <input type="text" name="divyieldgt" value="" />
+   <input type="text" name="evbyebitdalt" value="" />
+   <input type="text" name="orderby" value="oneyearchangepercent" />
+
+</form>
+
+</body>
+</html>
+

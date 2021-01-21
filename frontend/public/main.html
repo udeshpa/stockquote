@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="/fontawesome-free-5.10.1-web2/css/all.min.css" rel="stylesheet">
+    <link href="/css/earnprosper.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.4/css/fixedColumns.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/colreorder/1.5.1/css/colReorder.dataTables.min.css">
+    <script src="https://apis.google.com/js/platform.js" async="" defer=""></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&amp;display=swap" rel="stylesheet">
+    <script src="/js/popper.min.js"></script>
+    <title>Earn Prosper, Inc.</title>
+</head>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark"><a class="navbar-brand" href="#"> Earn Prosper </a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div
+        class="collapse navbar-collapse flex-row-reverse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            <li class="nav-item active mr-3"><a class="nav-link" href="#" onclick="signOut();"><i class="fas fa-user"> </i> Log out <span class="sr-only">(current)</span></a></li>
+            <li class="nav-item mr-3"><a class="nav-link" href="#"><i class="fas fa-envelope-square"></i> Contact <span class="sr-only">(current)</span></a></li>
+            <li class="nav-item mr-3"><a class="nav-link" href="#">About <span class="sr-only">(current)</span></a></li>
+        </ul>
+        </div>
+</nav>
+<div class="container uploadbanner">
+    <h1 class="text-center display-4"> Stock Analysis</h1>
+    <div class="row justify-content-around align-items-start mb-1" style="height: 300px;">
+        <div class="border border-dark col-sm-4 justify-content-around">
+            <h6 class="text-left mx-sm-2 mx-md-3"> Upload Stock Tickers </h6>
+            <h6> Space or Comma delimited file of tickers. </h6>
+            <div class="input-group mb-3">
+                <div class="custom-file col-sm-11">
+                    <form id="uploadbannerform" enctype="multipart/form-data" method="post" action="/uploadtickers"><input class="custom-file-input" id="inputGroupFile02" type="file"><label class="custom-file-label" for="inputGroupFile02"> Ticker file </label></form>
+                </div>
+                <div class="input-group-append"><button class="btn btn-primary" id="up-btn"> Upload</button></div>
+            </div>
+            <label for="stockTickers"> Or Enter Tickers below &amp; </label><button class="btn btn-primary" id="submit-btn"> Submit </button><textarea class="form-control" id="stockTickers" rows="2" style="min-width: 100%;"></textarea>
+            <label for="stockTickers"> Or Chose an Index </label>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="indexButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Indexes
+                </button>
+                <div id="indexdd" class="dropdown-menu" aria-labelledby="indexButton">
+                </div>
+              </div>
+        </div>
+
+        <div class="border border-dark col-sm-8 p-sm-0 justify-content-around">
+            <form id="filterform">
+                <div class="container filterpanel">
+                    <div class="row p-sm-0 mb-0 justify-content-around align-items-start" style="height: 300px;">
+                        <div class="border border-dark col-sm-3 justify-content-around">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">Filter By </div>
+                                <div class="panel-body fixed-panel" id="panel1"></div>
+                            </div>
+                        </div>
+                        <div class="border border-dark col-sm-1 justify-content-around">OR</div>
+                        <div class="border border-dark col-sm-4 justify-content-around">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">Filter By </div>
+                                <div class="panel-body fixed-panel" id="panel2"></div>
+                            </div>
+                        </div>
+                        <div class="border border-dark col-sm-1 justify-content-around d-flex align-items-center">OR</div>
+                        <div class="border border-dark col-sm-3 justify-content-around">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">Filter By </div>
+                                <div class="panel-body fixed-panel" id="panel3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="border border-dark d-flex justify-content-start align-items-start" style="height: 700px;">
+        <div class="col-sm-12 flex-md-row form-group">  
+            <div class="container" id="tabs">
+                <ul class="nav nav-tabs" id="requests-nav" role="tablist">
+                    <li class="nav-item" id="homeli"><a class="nav-link active" id="homelbl" href="#hometab" role="tab" data-toggle="tab" aria-controls="hometab">Home</a></li>
+                </ul>
+                <!-- Content Panel-->
+                <div class="tab-content" id="requests-nav-content">
+                    <div class="tab-pane active" id="hometab" role="tabpanel" aria-labelledby="homelbl"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Optional JavaScript-->
+<!-- jQuery first, then Popper.js, then Bootstrap JS-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://www.jsviews.com/download/jsrender.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.6/js/dataTables.fixedColumns.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/colreorder/1.5.1/js/dataTables.colReorder.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js" ></script>
+<script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.colVis.min.js" ></script>
+<script src="/js/main.js" async="" defer=""></script>
+<script src="/js/common.js" async="" defer=""></script>
+<script id="tabPaneTemplate" type="text/x-jquery-tmpl">
+    <div class='tab-pane' id='tab{{:requestid}}' role='tabpanel' aria-labelledby='tablbl{{:requestid}}'>
+        <div class='row'>
+            <div class='col-sm-6 border border-dark'>
+                <div id='filtertext-{{:requestid}}'>  </div>
+            </div>
+            <div class='col-sm-6 border border-dark'>
+                <button id='delete-{{:requestid}}' class='btn btn-primary' reqid='{{:requestid}}'> Delete </button>
+                <button id='filtersort-{{:requestid}}' class='btn btn-primary' reqid='{{:requestid}}'> Reapply Filter </button>
+                <button id='removefilter-{{:requestid}}' class='btn btn-primary' reqid='{{:requestid}}'> Remove Filter(s) </button>
+            </div>
+        </div>
+        <table id='stockdetails-{{:requestid}}' class='display compact'> </table>
+    </div>
+</script>
+<script id="filtertemplate" type="text/x-jquery-tmpl">
+    <div class='d-flex justify-content-left align-items-end'>
+        <label class='panellabel'> {{:filterdisplay}} </label>
+        <input type='text' id='{{:filtername}}{{:panelno}}' name='{{:filtername}}{{:panelno}}' style='max-width: 25%'>
+    </div>
+</script>
+
+<script id="indexddtemplate" type="text/x-jquery-tmpl">
+    <a class="dropdown-item" onclick="return submitIndex({{:indexid}})"> {{:indexname}}  </a>
+</script>

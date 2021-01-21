@@ -1,0 +1,97 @@
+body {
+	background: url(/images/finance.jpg);
+	background-size: cover;
+	background-position: center;
+	font-family: Lato;
+	color: white;
+}
+
+html {
+	height: 100%;
+}
+
+hr {
+	width: 400px;
+	border-top: 1px solid #f8f8f8;
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+#content {
+	text-align: left;
+	padding-top: 25%;
+	text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+				 0px 8px 13px rgba(0,0,0,0.1),
+				 0px 18px 23px rgba(0,0,0,0.1);
+}
+
+
+h1 {
+	font-weight: 700;
+	font-size: 5em;
+}
+
+.productcard {
+    color: black;
+}
+
+.uploadbanner {
+	background: white;
+    color: black;
+}
+
+table.dataTable  th {
+	text-align: left
+}
+
+table.dataTable  td { 
+	white-space: nowrap;
+	text-align: left
+}
+
+div.ColVis {
+	float: left;
+}
+
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_asc_disabled,
+table.dataTable thead .sorting_desc_disabled {
+    background-image: none!important;
+}
+
+
+table.dataTable display {
+    width: 100%;
+	margin: 0;  /* <- works for me this way ****/
+	padding:0;
+}
+
+th {
+	border-top: 1px solid #dddddd;
+	border-bottom: 1px solid #dddddd;
+	border-right: 1px solid #dddddd;
+  }
+
+    
+  #exTab3 .nav-pills > li > a {
+	border-radius: 4px 4px 0 0 ;
+  }
+  
+  #exTab3 .tab-content {
+	color : white;
+	background-color: #428bca;
+	padding : 5px 15px;
+  }
+
+  .fixed-panel {
+	min-height: 275px;
+	max-height: 275px;
+	overflow-y: scroll;
+  }
+
+  .panellabel {
+	display: inline-block;
+	width: 140px;
+	text-align: right;
+  }​
