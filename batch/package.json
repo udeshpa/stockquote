@@ -9,7 +9,7 @@
   "author": "uday deshpande",
   "license": "ISC",
   "dependencies": {
-    "pg": "7.12",
+    "pg": "8.4.0",
     "https": "^1.0.0",
     "config": "^3.2.0",
     "lodash": "^4.17.15",
