@@ -23,7 +23,7 @@
     "https": "^1.0.0",
     "nodemon": "^1.19.1",
     "node-rest-client": "^3.1.0",
-    "pug": "^2.0.4",
+    "pug": "^3.0.0",
     "config": "^3.2.0",
     "bottleneck": "2.19.5"
   }
